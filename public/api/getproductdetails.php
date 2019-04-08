@@ -42,7 +42,7 @@ $output = [
 	'success'=>true,
 	'productInfo' => $data
 ];
-var_dump($output);
+
 $json_output = json_encode($output );
 
 print($json_output);
