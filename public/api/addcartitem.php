@@ -39,7 +39,7 @@ if(empty($_SESSION['cart_id'])){
 		`item_count` = $product_quantity,
 		`total_price` = $product_total,
 		`created` = NOW(),
-		`users_id` = $user_id,
+		`user_id` = $user_id,
 		`changed` = NOW()
 	";
 	$cart_result = mysqli_query($conn, $cart_create_query);
