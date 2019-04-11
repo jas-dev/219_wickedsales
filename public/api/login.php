@@ -9,17 +9,21 @@ $output = [
     'success'=> false
 ];
 
-if(empty($_POST['email'])){
+$json_input= file_get_contents("php://input");
+
+$input= json_decode($json_input, true);
+
+if(empty($input['email'])){
     throw new Exception('email is required value');
 }
-if(empty($_POST['password'])){
+if(empty($input['password'])){
     throw new Exception('password is required value');
 }
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = $input['email'];
+$password = $input['password'];
 $hashedPassword = sha1($password);
-unset($_POST['password']);
+unset($input['password']);
 
 $query = "SELECT `id`, `name` FROM `users`
           WHERE `email` = '$email' AND `password`= '$hashedPassword'
