@@ -23,7 +23,7 @@ $cart_query = "SELECT
     FROM `carts` AS `c` 
     JOIN `cart_items` AS `ci` ON ci.`carts_id` = c.`id`
     JOIN `products` AS `p` ON ci.`products_id` = p.`id`
-    WHERE c.`id` = $cart_id AND c.`users_id` = $user_id";
+    WHERE c.`id` = $cart_id AND c.`user_id` = $user_id";
 
 $cart_data = mysqli_query($conn, $cart_query);
 
