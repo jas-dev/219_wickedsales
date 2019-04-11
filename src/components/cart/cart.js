@@ -14,7 +14,7 @@ class Cart extends Component{
     }
     async getCartData(){
         const {data = {}} = await axios.get('/api/getcartitems.php');
-        console.log('cart items:', data);
+        /*console.log('cart items:', data);*/
 
         if(data.success){
             this.setState({
@@ -30,7 +30,7 @@ class Cart extends Component{
         const cartItems = items.map(item=>{
             totalItems += item.quantity;
             const itemTotalPrice = formatMoney(item.quantity * item.price);
-            console.log("item obj:",item)
+            /*console.log("item obj:",item);*/
             return (
                 <tr key={item.id}>
                     <td>
