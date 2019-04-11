@@ -22,6 +22,9 @@ if(empty($input['password'])){
 
 $email = $input['email'];
 $password = $input['password'];
+
+$email = addslashes($email); //a way to prevent sql injection
+
 $hashedPassword = sha1($password);
 unset($input['password']);
 
