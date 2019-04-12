@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import Modal from '../modal'
 
 class ProductAdd extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            qty: 1
+            qty: 1,
+            modalOpen: false,
+            totalPrice: 0,
+            cartQty: 0
         };
 
         this.incrementQty=this.incrementQty.bind(this);
@@ -34,10 +38,25 @@ class ProductAdd extends Component{
 
         axios.get(`/api/addcartitem.php?product_id=${productId}&quantity=${qty}`).then(response=>{
             /*console.log('Add to cart response:', response);*/
-            updateCart(response.data.cartCount)
+            const { cartCount, cartTotal} = response.data;
+            updateCart(cartCount);
+
+            this.setState({
+                modalOpen: true,
+                cartQty: cartCount,
+                totalPrice: cartTotal
+            })
+
         });
     }
+    closeModal = ()=>{
+        this.setState({
+            modalOpen: false
+        })
+    };
     render(){
+        const {modalOpen, cartQty, totalPrice} = this.state;
+
         return(
             <div className="right-align add-to-cart">
                 <span className="qty-container">
@@ -53,8 +72,19 @@ class ProductAdd extends Component{
                 <button className="btn purple darken-2">
                     <i className="material-icons" onClick={this.addToCart}>add_shopping_cart</i>
                 </button>
-            </div>
 
+                <Modal close={this.closeModal} isOpen={modalOpen}>
+                    <h1 className="center">Item Added to Cart</h1>
+                        <div className="row">
+                            <div className="col s6>">Cart Total Items</div>
+                            <div className="col s6">{cartQty}</div>
+                        </div>
+                        <div className="row">
+                            <div className="col s6>">Cart Total Price</div>
+                            <div className="col s6">{totalPrice}</div>
+                        </div>
+                </Modal>
+            </div>
         )
     }
 }

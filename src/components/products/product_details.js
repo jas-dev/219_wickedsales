@@ -4,10 +4,11 @@ import ProductCarousel from './product_carousel';
 import MiscDetails from './misc_details';
 import { formatMoney } from '../../helpers';
 import ProductAdd from './product_add';
+
 class ProductDetails extends Component {
     state = {
         details: null
-    }
+    };
 
     componentDidMount(){
         this.getDetails()
@@ -31,7 +32,7 @@ class ProductDetails extends Component {
     }
 
     render(){
-        
+
         const { details } = this.state;
         const {match: {params}, updateCart} = this.props;
 
