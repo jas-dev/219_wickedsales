@@ -4,10 +4,11 @@ import ProductCarousel from './product_carousel';
 import MiscDetails from './misc_details';
 import { formatMoney } from '../../helpers';
 import ProductAdd from './product_add';
+
 class ProductDetails extends Component {
     state = {
         details: null
-    }
+    };
 
     componentDidMount(){
         this.getDetails()
@@ -31,8 +32,9 @@ class ProductDetails extends Component {
     }
 
     render(){
+
         const { details } = this.state;
-        const {params} = this.props.match;
+        const {match: {params}, updateCart} = this.props;
 
         if(details === null){
             return <h1>Loading...</h1>
@@ -49,7 +51,7 @@ class ProductDetails extends Component {
                     <ProductCarousel images={images} />
                     <div className="col s12 m8">
                         <div className="right-align product-price">{formatMoney(price)}</div>
-                        <ProductAdd productId={params.product_id}/>
+                        <ProductAdd productId={params.product_id} updateCart={updateCart}/>
                         <p>{description}</p>
                         <MiscDetails details={miscDetails}/>
                     </div>
