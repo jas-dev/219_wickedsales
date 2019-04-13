@@ -35,7 +35,7 @@ if(mysqli_affected_rows($conn) !== 1) {
 }
 
 $output['success']= true;
-$output['message']= 'skadoosh!';
+$output['message']= 'log out successful';
 
 unset($_SESSION['user_data']);
 
