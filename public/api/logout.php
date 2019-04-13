@@ -10,14 +10,12 @@ require_once('mysqlconnect.php');
 
 $output = [
     'success'=> false,
-    'message'=> null
 ];
 
-$id = $_SESSION['user_data']['id'];
 $token =$_SESSION['user_data']['token'];
-$username =$_SESSION['user_data']['username'];
 
-$delete_query = "DELETE FROM `user_connections` WHERE `token`=$token";
+
+$delete_query = "DELETE FROM `user_connections` WHERE `token`='$token'";
 
 $result = mysqli_query($conn,$delete_query);
 
@@ -37,6 +35,7 @@ if(mysqli_affected_rows($conn) !== 1) {
 }
 
 $output['success']= true;
+$output['message']= 'skadoosh!';
 
 unset($_SESSION['user_data']);
 

@@ -44,5 +44,6 @@ if(!empty($_SESSION['user_data'])){
 
 $json_output = json_encode($output);
 
+print($json_output)
 
 ?>

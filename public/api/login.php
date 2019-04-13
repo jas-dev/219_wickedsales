@@ -48,7 +48,7 @@ $token = $email . $data['id'] . microtime();
 $token = sha1($token);
 
 $connect_query = "INSERT INTO `user_connections` SET
-      `token`= {$token},
+      `token`= '$token',
       `user_id`= {$data['id']},
       `created`= NOW(),
       `ipaddress`= '{$_SERVER['REMOTE_ADDR']}'
