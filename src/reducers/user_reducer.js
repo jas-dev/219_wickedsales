@@ -9,10 +9,10 @@ const DEFAULT_STATE = {
     username: 'JimBob'
 };*/
 
-function userReducer(state= DEFAULT_STATE, action){ //will be called by redux when we try to update state
+function userReducer(state= DEFAULT_STATE, action){ /*will be called by redux when we try to update state*/
     switch(action.type){
-        /*case 'LOG_USER_IN':
-            return {...state, auth: true, username: action.username};*/
+        case 'SIGN_IN':
+            return {...state, auth: true};
         default:
             return state;
     }
