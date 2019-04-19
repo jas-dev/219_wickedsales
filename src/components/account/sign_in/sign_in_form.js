@@ -14,6 +14,7 @@ const SignInForm = props =>{
                 <Field id='password' name='password' component='input' type='text'/>
                 <label htmlFor='password'>Password</label>
             </div>
+            <button>Sign In</button>
         </form>
     );
 };
