@@ -18,7 +18,7 @@ export default function(WrappedComponent, to= '/account/sign-in', requireAuth = 
         }
 
         render() {
-            return <WrappedComponent />;
+            return <WrappedComponent {...this.props}/>;
         }
     }
 
