@@ -10,6 +10,11 @@ const SignInForm = props =>{
                 <Field id='email' name='email' component='input' type='text'/>
                 <label htmlFor='email'>Email</label>
             </div>
+            <div className='input-field'>
+                <Field id='password' name='password' component='input' type='text'/>
+                <label htmlFor='password'>Password</label>
+            </div>
+            <button>Sign In</button>
         </form>
     );
 };
